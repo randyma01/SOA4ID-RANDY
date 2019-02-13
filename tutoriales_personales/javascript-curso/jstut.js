@@ -1,7 +1,7 @@
 //----------------------------------------------------------------------------------------------------//
-// Codigo basado en los tutoriales de:
+// Codigo basado en el tutorial de:
 // - Derek Banas: JavaScript Tutorial (https://www.youtube.com/watch?v=fju9ii8YsGs)
-// - Fazt: Curso Javascript para Principiantes (https://www.youtube.com/watch?v=RqQ1d1qEWlE)
+// - Archivo HTML: jstut.html
 //----------------------------------------------------------------------------------------------------//
 
 //--------------------//
@@ -174,9 +174,10 @@ document.write("------------------", "<br />");
 // -- Condiciones -- //
 //--------------------//
 
-
 var age = 8;
+document.write(age);
  
+// If or Else
 if ((age >= 5) && (age <= 6)){
   document.write("Go to Kindergarten<br />");
 } else if (age > 18) {
@@ -184,7 +185,8 @@ if ((age >= 5) && (age <= 6)){
 } else {
   document.write("Go to Grade ", age - 5, "<br />");
 }
- 
+document.write("------------------", "<br />");
+
 document.write("true || false = ", true || false, "<br />");
  
 document.write("!true = ", ! true, "<br />");
@@ -192,8 +194,10 @@ document.write("!true = ", ! true, "<br />");
 document.write("\"5\" == 5 = ", ("5" == 5), "<br />");
  
 document.write("\"5\" === 5 = ", ("5" === 5), "<br />");
+document.write("------------------", "<br />");
+
  
-// Switch is used to match a limited number of options
+// Switch (bish)
 switch(age) {
   case 5 :
   case 6 :
@@ -207,9 +211,119 @@ switch(age) {
   default :
     document.write("Subtract 5 from your age<br />");
 }
+document.write("------------------", "<br />");
+
  
-// Ternary Operator assigns a value based on a condition
-// (condition) ? iftrue : ifFalse
+// Operador "ternary", es una unica condicion
+// -> (condicion) ? siEsTru : siEsNo
 var canIVote = (age >= 18) ? true : false;
- 
 document.write("Can I Vote : ", canIVote, "<br />");
+document.write("------------------", "<br />");
+
+//--------------------//
+// -- Loops -- //
+//--------------------// 
+
+// While 
+var i = 1;
+while (i <= 10){
+  document.write(i, ", ");
+  i++;
+}
+document.write("<br />");
+document.write("------------------", "<br />");
+ 
+// Do 
+/* do{
+  var guess = prompt("Guess a number between 1 and 20");
+}while(guess != 15)
+ 
+alert("You guessed it! 15 was the number");
+document.write("------------------", "<br />"); */
+ 
+// For
+for(j = 0; j <= 20; j++){
+  if((j % 2) == 0){
+    continue;
+  }
+  if(j == 15){
+    break;
+  }
+  document.write(j, ", ");
+}
+document.write("------------------", "<br />");
+
+var customer = {name : "Bob Thomas", address : "123 Main", balance : 50.50};
+ for(k in customer){
+  document.write(customer[k], "<br />");
+}
+document.write("------------------", "<br />");
+
+//--------------------//
+// -- Arrays -- //
+//--------------------// 
+
+// Arrays Silvestre, Salvaje y Comun
+var tomSmith = ["Tom Smith", "123 Main", 120.50];
+document.write("Array Completo : ", tomSmith, "<br />");
+
+// Primera Posicion
+document.write("1st State : ", tomSmith[0], "<br />");
+ 
+// Meter un Bicho
+tomSmith[3] = "tsmith@aol.com";
+ 
+// "Overwrite index 2 and fit everything else after index 2 without
+// overwriting (Put 0 for second parameter to not overwrite)"
+tomSmith.splice(2, 1, "Pittsburgh", "PA");
+ 
+// "Delete the 4th index item"
+tomSmith.splice(4,1);
+ 
+// "Convert an array into a string (Also use toString())"
+document.write("Array : ", tomSmith.valueOf(), "<br />");
+ 
+// "Convert an array into a string with separator"
+document.write("Array : ", tomSmith.join(", "), "<br />");
+ 
+// Borrar un Indice
+delete tomSmith[3];
+ 
+// Sort an array (reverse() for reverse sort)
+// Works for sorting strings
+tomSmith.sort();
+
+document.write("------------------", "<br />");
+ 
+// Sort numbers
+var numbers = [4,3,9,1,20,43];
+documento.write(numbers, "<br />");
+ 
+// Ordenamiento solo para Numeros
+//  X-Y: Ascendente 
+// Y-X: Descendente
+numbers.sort(function(x,y){ return x - y });
+document.write("Num Array : ", numbers.toString(), "<br />");
+ 
+// Mezclar los dos Arrays
+var combinedArray = numbers.concat(tomSmith);
+ 
+// Matar el Ultimo Bicho
+tomSmith.pop();
+ 
+// Meter un nuevo Bicho al Final
+tomSmith.push("555-1212", "US");
+ 
+// Matar el Primer Bicho
+tomSmith.shift();
+ 
+// Meter un nuevo Bicho al Inicio
+tomSmith.unshift("Tom Smith");
+ 
+for (var i = 0; i < tomSmith.length; i++) {
+  document.write(tomSmith[i], "<br />");
+}
+
+//--------------------//
+// -- Loops -- //
+//--------------------// 

@@ -1,3 +1,9 @@
+//----------------------------------------------------------------------------------------------------//
+// Codigo basado en el tutorial de:
+// - Fazt: Curso Javascript para Principiantes (https://www.youtube.com/watch?v=RqQ1d1qEWlE)
+// - Archivo HTML: index.html
+//----------------------------------------------------------------------------------------------------//
+
 //document.write("<h1>Hello World</h1>");
 
 //---tipos de datos---//
