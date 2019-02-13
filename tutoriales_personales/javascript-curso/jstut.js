@@ -490,9 +490,10 @@ cust2.addToBal(15.50);
 document.write(getInfo(cust2), "<br />");
 document.write("------------------", "<br />");
 
-// Define a shared prototype property for all objects
+// Una Propiedad que tienen todos los Objetos de un Tipo
 Customer.prototype.isCreditAvail = true;
  
+// Una Capacidad que tienen todos los Objetos de un Tipo
 // We define prototype methods that are shared by every object created
 Customer.prototype.toString = function(){
     return this.name + " lives at " + this.street + " in " + this.city + " " + this.state + " email : " + this.email + " and has a balance of $" + this.balance.toFixed(2) + " Creditworthy : " + this.isCreditAvail;
