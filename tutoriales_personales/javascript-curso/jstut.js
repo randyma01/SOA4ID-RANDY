@@ -1,3 +1,4 @@
+/* 
 //----------------------------------------------------------------------------------------------------//
 // Codigo basado en el tutorial de:
 // - Derek Banas: JavaScript Tutorial (https://www.youtube.com/watch?v=fju9ii8YsGs)
@@ -8,16 +9,15 @@
 // -- Introduccion -- //
 //--------------------//
 
-//<p id="sayHello"></p> **
+//<p id="sayHello"></p> 
 
-/* var yourName = prompt("What is your name?");
-
-if(yourName != null){
-    document.write("Hello " + yourName, "<br />");
-    //document.getElementById("sayHello").innerHTML = "Hello " + yourName; **
-}else{
-    alert("Please enter a name next time");
-} */
+//var yourName = prompt("What is your name?");
+//if(yourName != null){
+//    document.write("Hello " + yourName, "<br />");
+//    //document.getElementById("sayHello").innerHTML = "Hello " + yourName; 
+//}else{
+//    alert("Please enter a name next time");
+//} 
 
 //--------------------//
 // -- Variabales -- //
@@ -169,7 +169,6 @@ document.write("Sub : ", strToStyle.sub(), "<br />");
 document.write("Sup : ", strToStyle.sup(), "<br />");
 document.write("------------------", "<br />");
 
-
 //--------------------//
 // -- Condiciones -- //
 //--------------------//
@@ -196,7 +195,6 @@ document.write("\"5\" == 5 = ", ("5" == 5), "<br />");
 document.write("\"5\" === 5 = ", ("5" === 5), "<br />");
 document.write("------------------", "<br />");
 
- 
 // Switch (bish)
 switch(age) {
   case 5 :
@@ -234,12 +232,12 @@ document.write("<br />");
 document.write("------------------", "<br />");
  
 // Do 
-/* do{
-  var guess = prompt("Guess a number between 1 and 20");
-}while(guess != 15)
+//do{
+//  var guess = prompt("Guess a number between 1 and 20");
+//}while(guess != 15)
  
-alert("You guessed it! 15 was the number");
-document.write("------------------", "<br />"); */
+//alert("You guessed it! 15 was the number");
+//document.write("------------------", "<br />"); 
  
 // For
 for(j = 0; j <= 20; j++){
@@ -260,12 +258,12 @@ var customer = {name : "Bob Thomas", address : "123 Main", balance : 50.50};
 document.write("------------------", "<br />");
 
 //--------------------//
-// -- Arrays -- //
+// -- Arreglos -- //
 //--------------------// 
 
-// Arrays Silvestre, Salvaje y Comun
+// Arreglos Silvestre, Salvaje y Comun
 var tomSmith = ["Tom Smith", "123 Main", 120.50];
-document.write("Array Completo : ", tomSmith, "<br />");
+document.write("Arreglo Completo : ", tomSmith, "<br />");
 
 // Primera Posicion
 document.write("1st State : ", tomSmith[0], "<br />");
@@ -284,7 +282,7 @@ tomSmith.splice(4,1);
 document.write("Array : ", tomSmith.valueOf(), "<br />");
  
 // "Convert an array into a string with separator"
-document.write("Array : ", tomSmith.join(", "), "<br />");
+document.write("Arreglo : ", tomSmith.join(", "), "<br />");
  
 // Borrar un Indice
 delete tomSmith[3];
@@ -321,9 +319,183 @@ tomSmith.shift();
 tomSmith.unshift("Tom Smith");
  
 for (var i = 0; i < tomSmith.length; i++) {
-  document.write(tomSmith[i], "<br />");
+  document.write("Sentinela",tomSmith[i], "<br />");
 }
+document.write("------------------", "<br />");
+ */
+
 
 //--------------------//
-// -- Loops -- //
+// -- Funciones -- //
 //--------------------// 
+
+// Funcion para Verificar si hay Repetidos en un Arreglo
+function inArray(arrayToCheck, value){
+    for(i = 0; i < arrayToCheck.length; i++){
+      if(arrayToCheck[i] === value){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // Arreglo para la Funcion
+  var randArray = [1,2,3,4,5];
+
+  // Invocar la Funcion
+  document.write("In Array : ", inArray(randArray, 4), "<br />");
+  document.write("------------------", "<br />");
+      
+  // Esta seria la Auxiliar
+  function times3(num){
+    return num * 3;
+  }
+   
+  // Una Funcion como Parametro de Otra
+  function multiply(func, num){
+    return func(num);
+  }
+
+  document.write("3 * 15 = ", multiply(times3, 15), "<br />");
+  document.write("------------------", "<br />");
+   
+  // "Define a function expression
+  // We can assign functions to variables, store them in arrays,
+  // pass them into other functions and return them from functions"
+  var triple = function(num){
+    return num * 3;
+  };
+   
+  document.write("3 * 45 = ", multiply(triple, 45), "<br />");
+   
+  // Recibir una Cantidad Variable de Argumentos
+  function getSum(){
+    var sum = 0;
+    for(i = 0; i < arguments.length; i++){
+      sum += arguments[i];
+    }
+    return sum;
+  }
+   
+  // Mandarle un Ejercito de Argumentos
+  document.write("Sum : ", getSum(1,2,3,4,5), "<br />");
+  document.write("------------------", "<br />");
+
+  function times2(theArray){
+    var newArray = [];
+    for(i = 0; i < theArray.length; i++){
+      newArray.push(theArray[i] * 2);
+    }
+    return newArray;
+  }
+  document.write("Array Doubled : ", times2([1,2,3,4,5]).toString(), "<br />");
+  document.write("------------------", "<br />");
+
+  // Recursividad
+  function factorial(num){
+    if(num <= 1){
+      return 1;
+    } else {
+      return num * factorial(num - 1);
+    }
+  }
+  document.write("Factorial of 4 : ", factorial(4), "<br />");
+  document.write("------------------", "<br />");
+
+   
+//--------------------//
+// -- OO -- //
+//--------------------// 
+
+// "The variable is a reference to the object in memory"
+// Un Objeto Lleno de Variables
+// Atributos -> Propiedades ("Propiedades")
+// Funciones o Metodos -> Capacidades ("Capabilities")
+
+// Bicho 1
+var cust1 = {
+  name: "John Smith",
+  street: "123 Main",
+  city: "Pittsburgh",
+  state: "PA",
+  email: "jsmith@aol.com",
+  balance: 120.50,
+  payDownBal: function(amtPaid){
+    this.balance -= amtPaid;
+  },
+  addToBal: function(amtCharged){
+    this.balance += amtCharged;
+  }
+};
+ 
+// Get Name
+document.write("Customer Name : ", cust1.name, "<br />");
+ 
+// Get Street
+cust1.street = "215 Main St";
+document.write("Customer Address : ", cust1.street, "<br />");
+ 
+// Add & Set Country
+cust1.country = "US";
+document.write("Customer Country : ", cust1.country, "<br />");
+ 
+// Borrar una Propiedad
+delete cust1.country;
+ 
+// Recorrido de todas las Propiedades
+for (var prop in cust1) {
+    if (cust1.hasOwnProperty(prop)) {
+        document.write(prop, "<br />");
+    }
+}
+ 
+// Verificar si hay una Propiedad en una Objeto
+document.write("name in cust1 : ", "name" in cust1, "<br />");
+ 
+// Funcion con un Objeto como Parametro
+function getInfo(cust){
+  return cust1.name + " lives at " + cust1.street + " in " + cust1.city + " " + cust1.state + " email : " + cust1.email + " and has a balance of $" + cust1.balance;
+}
+ 
+document.write(getInfo(cust1), "<br />");
+ 
+// Call object methods
+cust1.payDownBal(20.50);
+cust1.addToBal(10.00);
+ 
+document.write(getInfo(cust1), "<br />");
+document.write("------------------", "<br />");
+ 
+// Create an object constructor
+function Customer(name, street, city, state, email, balance){
+  this.name = name;
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.email = email;
+  this.balance = balance;
+ 
+  this.payDownBal = function(amtPaid){
+    this.balance -= amtPaid;
+  };
+  this.addToBal = function(amtCharged){
+    this.balance += amtCharged;
+  };
+}
+ 
+// Bicho 2
+var cust2 = new Customer("Sally Smith", "234 Main", "Pittsburgh", "PA", "ssmith@aol.com", 0.00);
+document.write(getInfo(cust2), "<br />");
+cust2.addToBal(15.50);
+document.write(getInfo(cust2), "<br />");
+document.write("------------------", "<br />");
+
+// Define a shared prototype property for all objects
+Customer.prototype.isCreditAvail = true;
+ 
+// We define prototype methods that are shared by every object created
+Customer.prototype.toString = function(){
+    return this.name + " lives at " + this.street + " in " + this.city + " " + this.state + " email : " + this.email + " and has a balance of $" + this.balance.toFixed(2) + " Creditworthy : " + this.isCreditAvail;
+};
+ 
+document.write(cust2.toString());
