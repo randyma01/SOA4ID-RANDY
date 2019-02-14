@@ -7,23 +7,23 @@
 
 function verifySide(side){
     if (typeof side == 'number' && side>0){
-        return true
+        return true;
     }else{
-        return false
+        return false;
     }
 }
 
 function findTriangleType (sideA, sideB, sideC){
     if ((verifySide(sideA) == true) && (verifySide(sideB) == true) && (verifySide(sideC) == true)){
         if (sideA == sideB && sideB == sideC){
-            alert("The triangle is Equilateral.")
+            alert("The triangle is Equilateral.");
         } else if (sideA == sideB || sideB == sideC || sideC == sideA){
             alert("The triangle is Isosceles.")
         }else{
-            alert("The triangle is Scalene.")
+            alert("The triangle is Scalene.");
         }
     }else{
-        alert("The values of the sides of the triangle are wrong. Check again!")
+        alert("The values of the sides of the triangle are wrong. Check again!");
     }
   }
 
