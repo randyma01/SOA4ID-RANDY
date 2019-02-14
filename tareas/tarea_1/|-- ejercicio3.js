@@ -17,11 +17,11 @@ function numberAmstrong(number){
   if (verifyNumber(number) == true){
 
     var value = number;
-    var result;
-    var pw = number.toString().lenght;
+    var result = 0;
+    var powValue = number.toString().length;
     
     while(value != 0){
-      temp = Math.pow(value%10,pw);
+      temp = Math.pow(value%10,powValue);
       result = result + temp;
       value = Math.floor(value/10);
     }
