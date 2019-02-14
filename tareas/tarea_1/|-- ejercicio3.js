@@ -15,23 +15,19 @@ function verifyNumber(number){
 
 function numberAmstrong(number){
   if (verifyNumber(number) == true){
-
     var value = number;
     var result = 0;
     var powValue = number.toString().length;
-    
     while(value != 0){
       temp = Math.pow(value%10,powValue);
       result = result + temp;
       value = Math.floor(value/10);
     }
-
     if (result == number){
       alert("The number is type Amstrong!")
     }else{
       alert("The number is not type Amstrong!")
     }
-
   }else{
     alert("The parameter is incorrect. Check again!")
   }
