@@ -5,35 +5,59 @@
 // Ejercicio #1
 //----------------------------------------------------------------------------------------------------//
 
-function verifyPhrase(phrase){
+
+function  isLetter(phrase){
+  var len = phrase.length;
+  for (let i = 0; i < len; i++) 
+     if (!(phrase[i] >= "A" && phrase[i] <= "Z")){
+       return false;
+     }
+  return true;
+}
+
+function isPhrase(phrase){
   if(typeof phrase == "string"){
-    return true 
+    if(isLetter(phrase)){
+      return true;
+    }else{
+      return false;
+    }
   }else{
-    return false
+    return false;
   }
 }
 
 function isPanagram(phrase){
-  if(verifyPhrase(phrase) == true){
+  phrase = phrase.replace(/\s/g, '');
+  phrase = phrase.toUpperCase();
+  console.log(phrase);
+  var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var len = alphabet.length;
 
-    var phraseLenght = phrase.length;
+  if(isPhrase(phrase)){
 
-    for(let i = 0; i <= phraseLenght; i++){
-
-      if(phrase.codePointAt(i) >= 65 && phrase.codePointAt(i) <= 122){
+    for (let i = 0; i < len; i++){
+      if(phrase.includes(alphabet[i])){
         continue;
       }else{
-        alert("The phrase is not a Panagram.");
-        break;
+        console.log("The input not an Panagram.");
+        return;
       }
     }
+    console.log("The input is a Panagram.");
   }else{
-    alert("The input is not correct. Check again!")
+    console.log("The input is incorrect.");
   }
+ 
 }
 
 function main(){
   isPanagram("The quick brown fox jumps over the lazy dog");
+  isPanagram("The quick brown fox jums over the lazy dog");
+  isPanagram("abcdefgn");
+
+
 }
 
 main();
+
