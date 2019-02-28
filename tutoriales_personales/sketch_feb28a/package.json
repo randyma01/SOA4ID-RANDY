@@ -1,0 +1,17 @@
+{
+  "name": "ranmartz",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".mongorc.js",
+  "dependencies": {
+    "firmata": "^2.0.0",
+    "firmata-party": "^1.5.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "firmata": "firmata-party uno --debug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
