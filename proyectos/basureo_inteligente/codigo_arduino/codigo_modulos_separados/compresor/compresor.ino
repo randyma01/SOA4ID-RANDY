@@ -16,8 +16,8 @@
    por las necesidades del proyecto respectivamente.
 */
 
-int pin2 = 9;
-int pin7 = 10;
+int pin2 = 8;
+int pin7 = 9;
 int valorpote;
 int pwm1;
 int pwm2;

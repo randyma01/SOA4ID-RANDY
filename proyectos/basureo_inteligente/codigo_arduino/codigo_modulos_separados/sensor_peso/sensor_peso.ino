@@ -2,9 +2,7 @@
  * Estudiantes: Randy Martínez y Gustavo Fallas
  
  * Carnets: 2014047395 y 2014035394
-
  * Proyecto #1: IoT - Basurero Inteligente
-
  * Descripción: El siguiente código forma parte del módulo de los sensores
    de peso. 
  
@@ -15,7 +13,6 @@
    Para este módulo se utiliza una biblioteca externa llamada: HX711, esta se desacargo del
    repositorio oficial, el cual se puede encontrar en el siguiente enlace:
    https://github.com/bogde/HX711.
-
  * Aclaración: El código fue ajustado y modificado por Randy y Gustavo
    por las necesidades del proyecto respectivamente. 
 */
@@ -58,8 +55,9 @@ void setup()
   //Serial.println(zero_factor);
 }
 
-void getWeight()
+void loop()
 {
+
   scaleOne.set_scale(calibration_factor);
   scaleTwo.set_scale(calibration_factor);
 
@@ -91,9 +89,4 @@ void getWeight()
       scaleOne.tare();
     scaleTwo.tare();
   }
-}
-
-void loop()
-{
-  getWeight()
 }

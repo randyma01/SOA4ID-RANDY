@@ -22,11 +22,13 @@
 #include <Servo.h>
 #include "HX711.h"
 
-//-Sensor Cercanía-//
+//-Sensor Radar-//
 #define ECHO_PIN 13
-#define MAX_DISTANCE 400
+#define MAX_DISTANCE 200
 #define TRIGGER_PIN 12
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+bool state;
+
 
 //-Motor DC-//
 int dcOne = 8;
@@ -37,7 +39,7 @@ int pwm2;
 
 //-LedIR-//
 bool estadoLed = false;
-int periodo = 5000;
+int periodo =3000;
 unsigned long tiempoAnterior = 0;
 const int analogInPin = A1;
 const int OutPin = 13;
@@ -71,9 +73,9 @@ void compressor()
     }
 
     /*
-   Serial.print("Direccion: " );
+   Serial.print("Direccion:" );
    Serial.println(valorpote);
-  */
+    */
 
     pwm1 = map(valorpote, 0, 1023, 0, 255);
     pwm2 = map(valorpote, 0, 1023, 255, 0);
@@ -89,11 +91,11 @@ void controlTop()
         char temp = Serial.read();
         if (temp == 'a')
         {
-            openTop();
+            closeTop();
         }
         if (temp == 'c')
         {
-            closeTop();
+            openTop();
         }
     }
 }
@@ -137,7 +139,7 @@ void getWeight()
     if (Serial.available())
     {
         char temp = Serial.read();
-        if (temp == '+' || temp == 'a')
+        if (temp == '+' || temp == 'b')
         {
             calibrationFactor += 1000;
         }
@@ -201,12 +203,14 @@ void radar()
     if (distance <= 20)
     {
         Serial.println("Opening top door...");
+        state = true;
         openTop();
     }
 
-    if (distance <= 5)
+    if (state && distance <= 5)
     {
         Serial.println("Closing top door...");
+        state = true;
         closeTop();
     }
 }
@@ -231,18 +235,22 @@ void setup()
     //-----Motor DC-----//
     pinMode(dcOne, OUTPUT);
     pinMode(dcTwo, OUTPUT);
+
+    //-----Sensor Radar-----//
+    state = false;
+
 }
 
 void loop()
 {
     //-----Sensor Cercanía-----//
-    radar();
+    //radar();
 
     //-----Sensor Peso-----//
     //getWeight();
 
     //-----Motores Servos-----//
-    controlTop();
+    //controlTop();
 
     //-----Motores DC-----//
     //compressor();
