@@ -1,5 +1,5 @@
 /*
- * Estudiantes: Randy Martinez y Gustavo Fallas
+ * Estudiantes: Randy Martínez y Gustavo Fallas
  
  * Carnets: 2014047395 y 2014035394
  

@@ -1,5 +1,5 @@
 /*
- * Estudiantes: Randy Martinez y Gustavo Fallas
+ * Estudiantes: Randy Martínez y Gustavo Fallas
  
  * Carnets: 2014047395 y 2014035394
 
@@ -15,7 +15,6 @@
    Para este módulo se utiliza una biblioteca externa llamada: HX711, esta se desacargo del
    repositorio oficial, el cual se puede encontrar en el siguiente enlace:
    https://github.com/bogde/HX711.
-
 
  * Aclaración: El código fue ajustado y modificado por Randy y Gustavo
    por las necesidades del proyecto respectivamente. 
@@ -37,7 +36,7 @@ float calibration_factor = -92050.00;
 void setup()
 {
   Serial.begin(9600);
-   
+
   Serial.println("Calibrando e Iniciando");
 
   //Serial.println("HX711 calibration sketch");
@@ -45,7 +44,7 @@ void setup()
   //Serial.println("After readings begin, place known weight on scale");
   //Serial.println("Press + or a to increase calibration factor");
   //Serial.println("Press - or z to decrease calibration factor");
-  
+
   scaleOne.begin(firstDOUT, firstCLK);
   scaleOne.set_scale();
   scaleOne.tare();
@@ -53,7 +52,7 @@ void setup()
   scaleTwo.begin(secondDOUT, secondCLK);
   scaleTwo.set_scale();
   scaleTwo.tare();
-  
+
   //long zero_factor = scaleOne.read_average();
   //Serial.print("Zero factor: ");
   //Serial.println(zero_factor);
@@ -82,9 +81,6 @@ void loop()
   Serial.print(" g ");
   Serial.print('\n');
 
-
-
-
   if (Serial.available())
   {
     char temp = Serial.read();
@@ -94,6 +90,6 @@ void loop()
       calibration_factor -= 1000;
     else if (temp == 't' || temp == 'T')
       scaleOne.tare();
-      scaleTwo.tare();
+    scaleTwo.tare();
   }
 }
