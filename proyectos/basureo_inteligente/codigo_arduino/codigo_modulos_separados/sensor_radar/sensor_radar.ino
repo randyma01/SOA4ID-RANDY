@@ -7,7 +7,7 @@
 
  * Descripción: El siguiente código parte del módulo movimiento 
    autónomo del la tapa del basurero, de manera que se accione 
-   por medio del sensor.
+   por medio del sensor radar.
 
  * Nota: El código original es propiedad de GeekFactory llamado:
    "Sensor ultrasónico HC-SR04 y Arduino" tomado del siguient enlace:
