@@ -58,9 +58,8 @@ void setup()
   //Serial.println(zero_factor);
 }
 
-void loop()
+void getWeight()
 {
-
   scaleOne.set_scale(calibration_factor);
   scaleTwo.set_scale(calibration_factor);
 
@@ -92,4 +91,9 @@ void loop()
       scaleOne.tare();
     scaleTwo.tare();
   }
+}
+
+void loop()
+{
+  getWeight()
 }

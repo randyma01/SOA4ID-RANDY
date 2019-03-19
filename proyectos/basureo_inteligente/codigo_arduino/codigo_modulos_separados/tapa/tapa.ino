@@ -24,21 +24,26 @@ void setup()
 
 void loop()
 {
+  controlTop();
+}
+
+void controlTop()
+{
   if (Serial.available())
   {
     char temp = Serial.read();
     if (temp == 'a')
     {
-      abrir();
+      openTop();
     }
     if (temp == 'c')
     {
-      cerrar();
+      closeTop();
     }
   }
 }
 
-void abrir()
+void openTop()
 {
   servo_1.attach(4);
   servo_2.attach(3);
@@ -52,7 +57,7 @@ void abrir()
   Serial.println("abriendo...");
 }
 
-void cerrar()
+void closeTop()
 {
   servo_1.attach(4);
   servo_2.attach(3);
