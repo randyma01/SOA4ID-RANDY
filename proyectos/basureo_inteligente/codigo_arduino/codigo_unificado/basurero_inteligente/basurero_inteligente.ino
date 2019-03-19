@@ -23,14 +23,14 @@
 #include "HX711.h"
 
 //-Sensor Cercanía-//
+#define ECHO_PIN 13
+#define MAX_DISTANCE 400
 #define TRIGGER_PIN 12
-#define ECHO_PIN 11
-#define MAX_DISTANCE 200
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 //-Motor DC-//
-int pin2 = 9;
-int pin7 = 10;
+int dcOne = 8;
+int dcTwo = 9;
 int valorpote;
 int pwm1;
 int pwm2;
@@ -48,10 +48,10 @@ Servo servoRight;
 Servo servoLeft;
 
 //-Sensores Peso-//
-#define rightDOUT 3
-#define rightCLK 2
-#define leftDOUT 5
-#define leftCLK 4
+#define rightDOUT 5
+#define rightCLK 4
+#define leftDOUT 7
+#define leftCLK 6
 HX711 scaleRight;
 HX711 scaleLeft;
 float calibrationFactor = -92050.00;
@@ -78,8 +78,8 @@ void compressor()
     pwm1 = map(valorpote, 0, 1023, 0, 255);
     pwm2 = map(valorpote, 0, 1023, 255, 0);
 
-    analogWrite(pin2, pwm1);
-    analogWrite(pin7, pwm2);
+    analogWrite(dcOne, pwm1);
+    analogWrite(dcTwo, pwm2);
 }
 
 void controlTop()
@@ -100,8 +100,8 @@ void controlTop()
 
 void closeTop()
 {
-    servoRight.attach(4);
-    servoLeft.attach(3);
+    servoRight.attach(10);
+    servoLeft.attach(11);
     servoRight.writeMicroseconds(1000);
     servoLeft.writeMicroseconds(2000);
     delay(100);
@@ -117,7 +117,7 @@ void getWeight()
     scaleRight.set_scale(calibrationFactor);
     scaleLeft.set_scale(calibrationFactor);
 
-    Serial.print("Reading compartment #1: ");
+    Serial.print("Reading compartment right: ");
     Serial.print(scaleRight.get_units(), 1);
     Serial.print(" lbs ");
     Serial.print(" ó ");
@@ -126,7 +126,7 @@ void getWeight()
 
     Serial.print('\n');
 
-    Serial.print("Reading compartment #2: ");
+    Serial.print("Reading compartment left: ");
     Serial.print(scaleLeft.get_units(), 1);
     Serial.print(" lbs ");
     Serial.print(" ó ");
@@ -160,7 +160,7 @@ void ledIR()
     if (sensorValue > 900)
     {
         Serial.println("Detection > 900");
-        Motor();
+        compressor();
     }
     else
     {
@@ -174,8 +174,8 @@ void ledIR()
 
 void openTop()
 {
-    servoRight.attach(4);
-    servoLeft.attach(3);
+    servoRight.attach(10);
+    servoLeft.attach(11);
     servoRight.writeMicroseconds(2000);
     servoLeft.writeMicroseconds(1000);
     delay(100);
@@ -192,11 +192,11 @@ void radar()
     int uS = sonar.ping_median();
     int distance = (uS / US_ROUNDTRIP_CM);
 
-    /*
+    
   Serial.print("Distancia: ");
   Serial.print(distance);
   Serial.println("cm");
-    */
+    
 
     if (distance <= 20)
     {
@@ -218,7 +218,7 @@ void setup()
     //Serial.println("HX711 calibration sketch");
 
     //-----Sensor Peso-----//
-    scaleRight.be(rightDOUT, rightCLK);
+    scaleRight.begin(rightDOUT, rightCLK);
     scaleRight.set_scale();
     scaleRight.tare();
     scaleLeft.begin(leftDOUT, leftCLK);
@@ -229,20 +229,20 @@ void setup()
     //Serial.println(zero_factor);
 
     //-----Motor DC-----//
-    pinMode(pin2, OUTPUT);
-    pinMode(pin7, OUTPUT);
+    pinMode(dcOne, OUTPUT);
+    pinMode(dcTwo, OUTPUT);
 }
 
 void loop()
 {
     //-----Sensor Cercanía-----//
-    //radar();
+    radar();
 
     //-----Sensor Peso-----//
     //getWeight();
 
     //-----Motores Servos-----//
-    //controlTop();
+    controlTop();
 
     //-----Motores DC-----//
     //compressor();
