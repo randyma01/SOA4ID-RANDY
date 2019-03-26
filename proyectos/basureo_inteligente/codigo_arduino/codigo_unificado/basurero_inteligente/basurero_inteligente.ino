@@ -91,11 +91,11 @@ void controlTop()
         char temp = Serial.read();
         if (temp == 'a')
         {
-            closeTop();
+            openTop();
         }
         if (temp == 'c')
         {
-            openTop();
+            closeTop();
         }
     }
 }
@@ -105,10 +105,13 @@ void closeTop()
     servoRight.attach(10);
     servoLeft.attach(11);
     servoRight.writeMicroseconds(1000);
-    servoLeft.writeMicroseconds(2000);
+    servoLeft.writeMicroseconds(3000);
     delay(100);
-    //servoRight.writeMicroseconds(2000);
-    //servoLeft.writeMicroseconds(1000);
+    /*
+    
+    servoRight.writeMicroseconds(2000);
+    servoLeft.writeMicroseconds(1000);
+    */
     servoRight.detach();
     servoLeft.detach();
     Serial.println("Closing top door...");
@@ -178,11 +181,14 @@ void openTop()
 {
     servoRight.attach(10);
     servoLeft.attach(11);
-    servoRight.writeMicroseconds(2000);
+    servoRight.writeMicroseconds(3000);
     servoLeft.writeMicroseconds(1000);
     delay(100);
-    //servoRight.writeMicroseconds(1000);
-    //servoLeft.writeMicroseconds(2000);
+    /*
+    delay(100);
+    servoRight.writeMicroseconds(1000);
+    servoLeft.writeMicroseconds(2000);
+    */
     servoRight.detach();
     servoLeft.detach();
     Serial.println("Opening top door...");
@@ -238,16 +244,19 @@ void setup()
 
     //-----Sensor Radar-----//
     state = false;
+    pinMode(TRIGGER_PIN, OUTPUT);
+    pinMode(ECHO_PIN, INPUT);
+
 
 }
 
 void loop()
 {
     //-----Sensor Cercanía-----//
-    //radar();
+    radar();
 
     //-----Sensor Peso-----//
-    //getWeight();
+    getWeight();
 
     //-----Motores Servos-----//
     //controlTop();
