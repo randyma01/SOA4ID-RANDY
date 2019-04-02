@@ -1,10 +1,10 @@
 {
   "name": "nodejs_server_moongose_grahpql",
   "version": "1.0.0",
-  "description": "trabajo en clase. server en node js usando mongo y graphql",
-  "main": "app.js",
+  "description": "trabajo en clase servidor + nodejs + mongodb + graphql",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
   "author": "",
   "license": "ISC",
