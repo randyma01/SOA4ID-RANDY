@@ -1,7 +1,7 @@
 'use strict';
 
-const Hapi = require('hapi');
-//import hapi from 'hapi';
+//const Hapi = require('hapi');
+import hapi from 'hapi';
 //const mongoose = require('mongoose');
 import mongoose from "mongoose";
 
