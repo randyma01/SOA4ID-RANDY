@@ -4,11 +4,20 @@
   "description": "trabajo en clase servidor + nodejs + mongodb + graphql",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.11"
+    "hapi": "^18.1.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.4.21"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "nodemon": "^1.18.10"
   }
 }
